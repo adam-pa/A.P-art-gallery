@@ -12,15 +12,24 @@
     *{box-sizing:border-box}
 
     body {
-        margin: 0; 
-        padding: 0px; 
-        background: var(--bg); 
-        color: var(--ink);
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-        display: flex;
-        flex-direction: column; 
-        align-items: center;    
+      margin: 0; 
+      padding: 0px; 
+      background: var(--bg); 
+      color: var(--ink);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column; 
+      align-items: center;   
+      min-height: 100vh; 
     }
+    .main-content {
+      flex: 1; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    } 
+
     .header-section {
         width: 100%;
         padding: 40px 20px;
@@ -124,38 +133,41 @@
           <span class="subtitle", >← Back to Home</span> 
         </a>
     </div>
-    <hr class = "spacer-line">
 
-    <div id="gallery-list" class="gallery-list"></div>
-    <script>
-        const files = [
-                      "1.jpg",
-                      "2.jpg",
+    <div class="main-content">
+      <hr class = "spacer-line">
+      <div id="gallery-list" class="gallery-list"></div>
+      <script>
+          const files = [
+                        "1.jpg",
+                        "2.jpg",
+                        
                       
-                    
-                      ]; 
+                        ]; 
 
-        function loadGallery() {
-            const galleryContainer = document.getElementById('gallery-list');
-            const folderPath = 'Renders/';
+          function loadGallery() {
+              const galleryContainer = document.getElementById('gallery-list');
+              const folderPath = 'Renders/';
 
-            files.reverse().forEach((fileName) => {
-                const fileNumber = fileName.split('.')[0];
-                
-                const card = document.createElement('div');
-                card.className = 'gallery-card';
-                card.innerHTML = `
-                    <a href="${folderPath}${fileName}">
-                        <img src="${folderPath}${fileName}" alt="${fileName}">
-                    </a>
-                `;
-                galleryContainer.appendChild(card);
-            });
-        }
+              files.reverse().forEach((fileName) => {
+                  const fileNumber = fileName.split('.')[0];
+                  
+                  const card = document.createElement('div');
+                  card.className = 'gallery-card';
+                  card.innerHTML = `
+                      <a href="${folderPath}${fileName}">
+                          <img src="${folderPath}${fileName}" alt="${fileName}">
+                      </a>
+                  `;
+                  galleryContainer.appendChild(card);
+              });
+          }
 
-        loadGallery();
-    </script>
-    <hr class = "spacer-line">
+          loadGallery();
+      </script>
+      <hr class = "spacer-line">
+    </div>
+    
     <div class="footer-section">
         <span class="subtitle">Copyright © 2026 Adam P. All rights reserved.</span> 
     </div>

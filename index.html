@@ -6,7 +6,7 @@
   <style>
     
     :root{
-      --bg:#0a0a0a; --ink:#fff; --ink-dim:#cfcfcf; --hover:#1a1a1a; --border:#292929;
+      --bg:#0a0a0a; --ink:#fff; --ink-dim:#949494; --hover:#525151; --border:#292929;
       --radius:12px;
     }
     *{box-sizing:border-box}
@@ -16,8 +16,16 @@
       display:grid; place-items:start center; 
       gap: 10px;
     }
-    .subtitle{ margin:1; color:var(--ink-dim); font-size:20px; }
-    
+
+
+    .subtitle{ margin:1; color:var(--ink); font-size:15px; }
+    .socials{ margin:1; color:var(--ink-dim); font-size:15px; text-decoration: none;transition: color 0.2s ease;}
+    .socials:hover {color: var(--hover) ;}
+    .socials-container {
+      text-align: left;
+      width: 100%; max-width: 800px;
+      margin: 10px auto; 
+    }
     h1{ 
       margin:0 0 6px 0;   
       font-weight:100; 
@@ -26,13 +34,13 @@
     }
 
     .spacer-line {
-      width: 100%;
+      width: 100%; max-width: 800px;
       border: none;
       border-top: 1px solid var(--border);
     }
 
     .img-main {
-      width: 50%;
+      width: 100%; max-width: 800px;
       border-style: solid;
       border-width: 2px;
       border-radius: 5px;
@@ -41,32 +49,32 @@
     }
 
     .btn {
-        position: relative; 
-        display: block;
-        width: 100%;
-        text-align: center;
-        text-decoration: none;
-        font-weight:100; 
-        font-size: 20px;
-        color: var(--ink);
-        border: 1px solid var(--border);
-        padding: 16px 20px;
-        border-radius: 10px;
-        overflow: hidden;
-        transition: background 0.3s ease, transform 0.04s ease;
-        
-        background: rgba(10, 10, 10, 0.7);
+      position: relative; 
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      font-weight:100; 
+      font-size: 20px;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: background 0.3s ease;
+      
+      background: rgba(10, 10, 10, 0.7);
     }
 
     .btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--bg-img) center/cover;
-        z-index: -1; 
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-img) center/cover;
+      z-index: -1; 
     }
 
     .btn:hover {
@@ -76,7 +84,7 @@
     .card{
       background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
       padding:18px; display:grid; gap:14px;
-      width: 40%;
+      width: 100%; max-width: 800px;
       place-items:start center;
     }
 
@@ -85,7 +93,14 @@
 
 <body>
     <h1>Adam.P</h1>
+    <hr class = "spacer-line">
+    <span class="subtitle", >I'm a 3d artist and computer graphic programer. </span> 
+    <span class="subtitle", >if you enjoy my work and are curious about my making process, feel free to message me ;) </span> 
+    <span class="subtitle", ></span> 
+   
+
     <section class="card">
+
         <a class="btn" href="FPT_Gallery/index.html" 
         style="--bg-img: url('button_images/1.jpg');">
         My FPT Gallery
@@ -100,8 +115,23 @@
         style="--bg-img: url('button_images/3.jpg');">
         Other
         </a>
+
     </section>
 
+    <div class="socials-container">
+
+        <a href="https://github.com/adam-pa/FPT" style="text-decoration: none;">
+            <span class="socials">-FPT- </span> 
+        </a>          
+        <a href="https://www.instagram.com/adamp.art/" style="text-decoration: none;">
+            <span class="socials">-instagram- </span> 
+        </a>   
+        <a href="https://www.youtube.com/@AdamPArt3/videos" style="text-decoration: none;">
+            <span class="socials">-youtube- </span> 
+
+        </a>
+    </div>    
+    <hr class = "spacer-line">
 
 </body>
 
