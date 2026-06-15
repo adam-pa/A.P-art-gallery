@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adam.P</title>
+  <style>
+    
+    :root{
+      --bg:#0a0a0a; --ink:#fff; --ink-dim:#cfcfcf; --hover:#1a1a1a; --border:#292929;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; padding:20px; background:var(--bg); color:var(--ink);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:start center; 
+      gap: 10px;
+    }
+    .subtitle{ margin:1; color:var(--ink-dim); font-size:20px; }
+    
+    h1{ 
+      margin:0 0 6px 0;   
+      font-weight:100; 
+      font-size: 60px;
+      letter-spacing:.2px; 
+    }
+
+    .spacer-line {
+      width: 100%;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .img-main {
+      width: 50%;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 5px;
+      border-color: var(--border);
+      padding: 10px;
+    }
+
+    .btn {
+        position: relative; 
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        font-weight:100; 
+        font-size: 20px;
+        color: var(--ink);
+        border: 1px solid var(--border);
+        padding: 16px 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: background 0.3s ease, transform 0.04s ease;
+        
+        background: rgba(10, 10, 10, 0.7);
+    }
+
+    .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-img) center/cover;
+        z-index: -1; 
+    }
+
+    .btn:hover {
+        background: rgba(32, 32, 32, 0.7);
+    }
+
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:18px; display:grid; gap:14px;
+      width: 40%;
+      place-items:start center;
+    }
+
+  </style>
+</head>
+
+<body>
+    <h1>Adam.P</h1>
+    <section class="card">
+        <a class="btn" href="FPT_Gallery/index.html" 
+        style="--bg-img: url('Button_images/1.png');">
+        My FPT Gallery
+        </a>
+
+        <a class="btn" href="Render_Gallery/index.html" 
+        style="--bg-img: url('Button_images/2.png');">
+        My Renders
+        </a>
+
+        <a class="btn" href="Other_Gallery/index.html" 
+        style="--bg-img: url('Button_images/3.png');">
+        Other
+        </a>
+    </section>
+
+
+</body>
+
+</html>
