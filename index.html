@@ -39,6 +39,16 @@
       border-top: 1px solid var(--border);
     }
 
+    .button-row {
+      display: flex;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .button-row .btn {
+      flex: 1;
+    }
+
     .btn {
       position: relative; 
       display: block;
@@ -92,15 +102,19 @@
 
     <section class="card">
 
-        <a class="btn" href="FPT_Gallery/index.html" 
-        style="--bg-img: url('button_images/1.jpg');">
-        My FPT Gallery
-        </a>
-
         <a class="btn" href="Render_Gallery/index.html" 
         style="--bg-img: url('button_images/2.jpg');">
         My Renders
         </a>
+
+        <div class="button-row">
+          <a class="btn" href="FPT_Gallery/index.html" style="--bg-img: url('button_images/1.jpg');">
+            My FPT Gallery
+          </a>
+          <a class="btn" href="FPT_Fan_Gallery/index.html" style="--bg-img: url('button_images/4.jpg');">
+            Fan FPT Gallery
+          </a>
+        </div>
 
         <a class="btn" href="Other_Gallery/index.html" 
         style="--bg-img: url('button_images/3.jpg');">

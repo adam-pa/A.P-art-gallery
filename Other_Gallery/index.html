@@ -138,29 +138,23 @@
       <hr class = "spacer-line">
       <div id="gallery-list" class="gallery-list"></div>
       <script>
-          const files = [
-                        "1.jpg",
-                        "2.jpg",
-                        
-                      
-                        ]; 
-
           function loadGallery() {
               const galleryContainer = document.getElementById('gallery-list');
               const folderPath = 'Renders/';
 
-              files.reverse().forEach((fileName) => {
-                  const fileNumber = fileName.split('.')[0];
-                  
+              let number_of_img = 2; //number of images ---------------------------------------------------------------------- number of images
+
+              for (let i = 1; i <= number_of_img; i++) {
                   const card = document.createElement('div');
                   card.className = 'gallery-card';
                   card.innerHTML = `
-                      <a href="${folderPath}${fileName}">
-                          <img src="${folderPath}${fileName}" alt="${fileName}">
+                      <a href="${folderPath}${number_of_img-i + 1}.jpg">
+                          <img src="${folderPath}${number_of_img-i + 1}.jpg" alt="Render ${i}">
                       </a>
                   `;
                   galleryContainer.appendChild(card);
-              });
+              }
+
           }
 
           loadGallery();

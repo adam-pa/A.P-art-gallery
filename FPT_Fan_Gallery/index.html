@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FPT Fan Renders</title>
+  <style>
+    
+    :root{
+      --bg:#0a0a0a; --card:#121526; --ink:#fff; --ink-dim:#a5a5a5; --hover:#1f1f1f; --border:#292929;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+
+    body {
+      margin: 0; 
+      padding: 0px; 
+      background: var(--bg); 
+      color: var(--ink);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column; 
+      align-items: center;   
+      min-height: 100vh; 
+    }
+    .main-content {
+      flex: 1; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    } 
+
+    .header-section {
+        width: 100%;
+        padding: 4% 20px;
+        text-align: center;
+        background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('Renders/23.jpg');
+        background-size: cover;
+        background-position: center;
+        border-bottom-style: solid;
+        border-width: 2px;
+        border-color: var(--border);  
+    }
+    .header-section a {
+        text-decoration: none;
+    }
+
+    .footer-section {
+        width: 100%;
+        padding: 4% 20px;
+        text-align: center;
+        background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)),  url('Renders/23.jpg');
+        background-size: cover;
+        background-position: center;
+        border-top-style: solid;
+        border-width: 2px;
+        border-color: var(--border);
+  
+    }
+    .spacer-line {
+        width: 100%;     
+        border: none;
+        border-top: 0px solid var(--border);
+        margin: 20px 0;  
+    }
+    
+
+    h1{ 
+      margin:0 0 6px 0;   
+      font-weight:100; 
+      font-size: 60px;
+      letter-spacing:.2px; 
+    }
+
+    .subtitle{ 
+      margin:1; 
+      color:var(--ink-dim); 
+      font-size:20px; 
+      font-weight:100; 
+      text-decoration: none;
+    }
+
+    .gallery-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 90%;
+    }
+
+    .gallery-card {
+      display: flex;
+      justify-content: center;
+
+    }
+
+    .gallery-card a {
+      display: inline-block;
+      border: 2px solid var(--border);
+      border-radius: 12px; 
+      padding: 10px;
+      background: none;
+      transition: background 0.3s ease;
+      line-height: 0; 
+    }
+
+    .gallery-card a:hover {
+      background: var(--hover);
+    }
+
+    .gallery-card img {
+      display: block;
+      width: 100%;      
+      aspect-ratio: 1 / 1; 
+      object-fit: cover;
+      object-position: center;
+      border: none;
+      border-radius: 8px;
+    }
+    .gallery-card a {
+        display: inline-block;
+        position: relative; 
+        border: 2px solid var(--border);
+        border-radius: 12px; 
+        padding: 10px;
+        background: none;
+        transition: background 0.3s ease;
+        line-height: 0; 
+    }
+    .card-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .author-tag {
+        position: absolute;
+        top: 20px;   
+        right: 20px; 
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        pointer-events: none;
+    }
+
+  </style>
+</head>
+
+<body>
+    <div class="header-section">
+        <h1>FPT Fan Renders</h1>
+        <a href="../index.html">
+          <span class="subtitle", >← Back to Home</span> 
+        </a>
+    </div>
+    <div class="main-content">
+      <hr class = "spacer-line">
+      <div id="gallery-list" class="gallery-list"></div>
+      <script>
+              const galleryData = [
+                  { file: "1.jpg", author: "Escapism" },
+                  { file: "2.jpg", author: "Escapism" },
+                  { file: "3.jpg", author: "Escapism" },
+                  { file: "4.jpg", author: "Escapism" },
+                  { file: "5.jpg", author: "Escapism" },
+                  { file: "6.jpg", author: "Escapism" },
+                  { file: "7.jpg", author: "Escapism" },
+                  { file: "8.jpg", author: "Escapism" },
+                  { file: "9.jpg", author: "Escapism" },
+                  { file: "10.jpg", author: "Escapism" },
+                  { file: "11.jpg", author: "Escapism" },
+                  { file: "12.jpg", author: "Escapism" },
+                  { file: "13.jpg", author: "Escapism" },
+                  { file: "14.jpg", author: "Escapism" },
+                  { file: "15.jpg", author: "Escapism" },
+                  { file: "16.jpg", author: "Escapism" },
+                  { file: "17.jpg", author: "Escapism" },
+                  { file: "18.jpg", author: "Escapism" },
+                  { file: "19.jpg", author: "Escapism" },
+                  { file: "20.jpg", author: "Escapism" },
+                  { file: "21.jpg", author: "Escapism" },
+                  { file: "22.jpg", author: "Escapism" },
+                  { file: "23.jpg", author: "Escapism" },
+                  { file: "24.jpg", author: "greg7gkb" },
+                  { file: "25.jpg", author: "greg7gkb" },
+              ];
+
+              function loadGallery() {
+                  const galleryContainer = document.getElementById('gallery-list');
+                  const folderPath = 'Renders/';
+
+                  galleryData.reverse().forEach((item) => {
+                      const card = document.createElement('div');
+                      card.className = 'gallery-card';
+                      card.innerHTML = `
+                          <a href="${folderPath}${item.file}" class="card-wrapper">
+                              <img src="${folderPath}${item.file}" alt="${item.file}">
+                              <span class="author-tag">${item.author}</span>
+                          </a>
+                      `;
+                      galleryContainer.appendChild(card);
+                  });
+              }
+              loadGallery();
+      </script>
+      <hr class = "spacer-line">
+    </div>
+    <div class="footer-section">
+    </div>
+  
+</body>
+
+</html>
