@@ -144,6 +144,25 @@
         pointer-events: none;
     }
 
+
+    .load-more-button {
+        background: none;
+        border: 2px solid var(--border);
+        color: var(--ink-dim);
+        padding: 16px 32px;
+        font-size: 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 30px 0;
+        font-family: inherit;
+    }
+
+    .load-more-button:hover {
+        background: var(--hover);
+    }
+
+
   </style>
 </head>
 
@@ -154,10 +173,17 @@
           <span class="subtitle", >← Back to Home</span> 
         </a>
     </div>
+    
     <div class="main-content">
-      <hr class = "spacer-line">
-      <div id="gallery-list" class="gallery-list"></div>
-      <script>
+        <hr class="spacer-line">
+        <div id="gallery-list" class="gallery-list"></div>
+        
+        <button id="load-more-btn" class="load-more-button">Load More</button>
+        
+        <hr class="spacer-line">
+    </div>
+
+    <script>
               const galleryData = [
                   { file: "1.jpg", author: "Escapism" },
                   { file: "2.jpg", author: "Escapism" },
@@ -186,24 +212,40 @@
                   { file: "25.jpg", author: "greg7gkb" },
               ];
 
-              function loadGallery() {
-                  const galleryContainer = document.getElementById('gallery-list');
-                  const folderPath = 'Renders/';
+        const reversedData = [...galleryData].reverse();
+        
+        let currentIndex = 0;
+        const itemsPerLoad = 30; 
+        const galleryContainer = document.getElementById('gallery-list');
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const folderPath = 'Renders/';
 
-                  galleryData.reverse().forEach((item) => {
-                      const card = document.createElement('div');
-                      card.className = 'gallery-card';
-                      card.innerHTML = `
-                          <a href="${folderPath}${item.file}" class="card-wrapper">
-                              <img src="${folderPath}${item.file}" alt="${item.file}">
-                              <span class="author-tag">${item.author}</span>
-                          </a>
-                      `;
-                      galleryContainer.appendChild(card);
-                  });
-              }
-              loadGallery();
-      </script>
+        function renderItems() {
+            const end = Math.min(currentIndex + itemsPerLoad, reversedData.length);
+
+            for (let i = currentIndex; i < end; i++) {
+                const item = reversedData[i];
+                const card = document.createElement('div');
+                card.className = 'gallery-card';
+                card.innerHTML = `
+                    <a href="${folderPath}${item.file}" class="card-wrapper">
+                        <img src="${folderPath}${item.file}" alt="${item.file}">
+                        <span class="author-tag">${item.author}</span>
+                    </a>
+                `;
+                galleryContainer.appendChild(card);
+            }
+
+            currentIndex = end;
+            if (currentIndex >= reversedData.length) {
+                loadMoreBtn.style.display = 'none';
+            }
+        }
+        loadMoreBtn.addEventListener('click', renderItems);
+
+        renderItems();
+
+    </script>
       <hr class = "spacer-line">
     </div>
     <div class="footer-section">

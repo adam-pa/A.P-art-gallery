@@ -123,6 +123,24 @@
 
     }
 
+
+    .load-more-button {
+        background: none;
+        border: 2px solid var(--border);
+        color: var(--ink-dim);
+        padding: 16px 32px;
+        font-size: 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 30px 0;
+        font-family: inherit;
+    }
+
+    .load-more-button:hover {
+        background: var(--hover);
+    }
+
   </style>
 </head>
 
@@ -133,32 +151,55 @@
           <span class="subtitle", >← Back to Home</span> 
         </a>
     </div>
+    
     <div class="main-content">
-      <hr class = "spacer-line">
-      <div id="gallery-list" class="gallery-list"></div>
-      <script>
+        <hr class="spacer-line">
+        <div id="gallery-list" class="gallery-list"></div>
+        
+        <button id="load-more-btn" class="load-more-button">Load More</button>
+        
+        <hr class="spacer-line">
+    </div>
 
-          function loadGallery() {
-              const galleryContainer = document.getElementById('gallery-list');
-              const folderPath = 'Renders/';
+    <script>
+      
+      const totalImages = 50; 
+      
 
-              let number_of_img = 50; //number of images ---------------------------------------------------------------------- number of images
+      let currentCount = 0;
+      const imagesPerLoad = 30;
+      const folderPath = 'Renders/';
 
-              for (let i = 1; i <= number_of_img; i++) {
-                  const card = document.createElement('div');
-                  card.className = 'gallery-card';
-                  card.innerHTML = `
-                      <a href="${folderPath}${number_of_img-i + 1}.jpg">
-                          <img src="${folderPath}${number_of_img-i + 1}.jpg" alt="Render ${i}">
-                      </a>
-                  `;
-                  galleryContainer.appendChild(card);
-              }
+      const galleryContainer = document.getElementById('gallery-list');
+      const button = document.getElementById('load-more-btn');
 
+      function loadGallery() {
+          let end = Math.min(currentCount + imagesPerLoad, totalImages);
+
+          for (let i = currentCount; i < end; i++) {
+              let imgNumber = totalImages - i;
+              const card = document.createElement('div');
+              card.className = 'gallery-card';
+              card.innerHTML = `
+                  <a href="${folderPath}${imgNumber}.jpg">
+                      <img src="${folderPath}${imgNumber}.jpg" alt="Render ${imgNumber}">
+                  </a>
+              `;
+              galleryContainer.appendChild(card);
           }
 
-          loadGallery();
-      </script>
+          currentCount = end;
+
+          if (currentCount >= totalImages) {
+              button.style.display = 'none';
+          }
+      }
+
+      button.addEventListener('click', loadGallery);
+
+      loadGallery();
+      
+    </script>
       <hr class = "spacer-line">
     </div>
     <div class="footer-section">
